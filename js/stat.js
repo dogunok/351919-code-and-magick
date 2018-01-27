@@ -9,7 +9,7 @@ var barWidth = 40;
 var barHeight = 150;
 var renderCloud = function (ctx, x, y, color) {
   ctx.fillStyle = color;
-  ctx.fillRect (x, y, cloudWidth, cloudHeight);
+  ctx.fillRect(x, y, cloudWidth, cloudHeight);
 };
 window.renderStatistics = function (ctx, names, times) {
 
@@ -22,8 +22,8 @@ window.renderStatistics = function (ctx, names, times) {
     ctx.fillRect(cloudX + barWidth + (barGap + barWidth) * i, barGap, barWidth, barHeight);
     switch (names[i]) {
       case 'Вы':
-      ctx.fillStyle = 'rgba(255, 0, 0, 1)';
-    break;
+        ctx.fillStyle = 'rgba(255, 0, 0, 1)';
+        break;
     }
   }
 };
