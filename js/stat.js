@@ -1,25 +1,25 @@
-var CLOUD_WIDTH;
-CLOUD_WIDTH = 420;
-var CLOUD_HEIGHT = 270;
-var CLOUD_X = 100;
-var CLOUD_Y = 10;
-var GAP = 10;
-var BAR_GAP =50;
-var BAR_WIDTH =40;
-var BAR_HEIGHT =150;
+'use strict';
+var cloudWidth = 420;
+var cloudHeight = 270;
+var cloudX = 100;
+var cloudY = 10;
+var gap = 10;
+var barGap = 50;
+var barWidth = 40;
+var barHeight = 150;
 var renderCloud = function (ctx,x ,y, color){
   ctx.fillStyle = color;
-  ctx.fillRect (x,y,CLOUD_WIDTH,CLOUD_HEIGHT);
+  ctx.fillRect (x,y,cloudWidth,cloudHeight);
 };
 window.renderStatistics = function(ctx, names, times) {
 //создаем 2 облака
-  renderCloud(ctx, CLOUD_X+GAP, CLOUD_Y+GAP, 'rgba(0, 0, 0, 0.7)');
-  renderCloud(ctx, CLOUD_X, CLOUD_Y,'#ffffff');
+  renderCloud(ctx, cloudX+gap, cloudY+gap, 'rgba(0, 0, 0, 0.7)');
+  renderCloud(ctx, cloudX, cloudY,'#ffffff');
 ctx.fillStyle = '#000';
 for (var i = 0;i < names.length;i++){
-  ctx.fillText(names[i], CLOUD_X+BAR_WIDTH +(BAR_GAP+BAR_WIDTH)*i,BAR_HEIGHT+GAP*2+BAR_GAP);
-  ctx.fillText(Math.round(times[i]), CLOUD_X+BAR_WIDTH +(BAR_GAP+BAR_WIDTH)*i,BAR_GAP-GAP);
-  ctx.fillRect(CLOUD_X+BAR_WIDTH +(BAR_GAP+BAR_WIDTH)*i, BAR_GAP,BAR_WIDTH, BAR_HEIGHT);
+  ctx.fillText(names[i], cloudX+barWidth +(barGap+barWidth)*i,barHeight+gap*2+barGap);
+  ctx.fillText(Math.round(times[i]), cloudX+barWidth +(barGap+barWidth)*i, barGap-gap);
+  ctx.fillRect(cloudX+barWidth +(barGap+barWidth)*i, barGap, barWidth, barHeight);
     switch(names[i]){
       case 'Вы':
        ctx.fillStyle = 'rgba(255, 0, 0, 1)';
