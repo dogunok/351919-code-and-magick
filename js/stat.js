@@ -25,28 +25,29 @@ var getMaxElement = function (arr) {
 var getRandom = function () {
   return Math.random();
 };
-var placeText = function (ctx, text, x, y, size, color) {
+var placeText = function (ctx, text, x, y, size, colorText) {
   ctx.font = size;
-  ctx.fillStyle = color;
+  ctx.fillStyle = colorText;
   ctx.fillText(text, x, y);
+};
+var formationBar = function (ctx, x, y, widthBar, heightBar, colorBar) {
+  ctx.fillStyle = colorBar;
+  ctx.fillRect(x, y, widthBar, heightBar);
 };
 window.renderStatistics = function (ctx, names, times) {
   renderCloud(ctx, cloudX + gap, cloudY + gap, 'rgba(0, 0, 0, 0.7)');
   renderCloud(ctx, cloudX, cloudY, '#ffffff');
-  ctx.fillStyle = '#083689';
-  var maxTime = getMaxElement(times);
+  placeText(ctx, text1, 120, 50, '16px PT Mono', '#000');
+  placeText(ctx, text2, 120, 70, '16px PT Mono', '#000');
+    var maxTime = getMaxElement(times);
   for (var i = 0; i < names.length; i++) {
     var fixedRandom = getRandom().toFixed(1);
     if (names[i] === 'Вы') {
-      ctx.fillStyle = 'rgba(255, 0, 0, 0.7)';
+     formationBar(ctx, cloudX + barWidth + (barGap + barWidth) * i, barGap * 2 + (barHeight - ((barHeight * times[i]) / maxTime)), barWidth, (barHeight * times[i]) / maxTime, 'rgba(255, 0, 0, 0.7)'); 
     } else {
-      ctx.fillStyle = 'rgba(8,54,137, ' + fixedRandom + ')';
+     formationBar(ctx, cloudX + barWidth + (barGap + barWidth) * i, barGap * 2 + (barHeight - ((barHeight * times[i]) / maxTime)), barWidth, (barHeight * times[i]) / maxTime, 'rgba(8,54,137, ' + fixedRandom + ')');
     }
-    ctx.fillRect(cloudX + barWidth + (barGap + barWidth) * i, barGap * 2 + (barHeight - ((barHeight * times[i]) / maxTime)), barWidth, (barHeight * times[i]) / maxTime);
-    ctx.fillText(names[i], cloudX + barWidth + (barGap + barWidth) * i, barHeight + gap * 2 + barGap * 2);
-    ctx.fillText(Math.round(times[i]), cloudX + barWidth + (barGap + barWidth) * i, barGap * 2 - gap + (barHeight - ((barHeight * times[i]) / maxTime)));
-    ctx.font = '16px PT Mono';
-    placeText(ctx, text1, 120, 50, '16px PT Mono', '#000');
-    placeText(ctx, text2, 120, 70, '16px PT Mono', '#000');
-  }
+    placeText(ctx, names[i], cloudX + barWidth + (barGap + barWidth) * i, barHeight + gap * 2 + barGap * 2, '16px PT Mono', '#000');
+    placeText(ctx, Math.round(times[i]), cloudX + barWidth + (barGap + barWidth) * i, barGap * 2 - gap + (barHeight - ((barHeight * times[i]) / maxTime)), '16px PT Mono', '#000' );
+    }
 };
