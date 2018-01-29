@@ -39,15 +39,15 @@ window.renderStatistics = function (ctx, names, times) {
   renderCloud(ctx, cloudX, cloudY, '#ffffff');
   placeText(ctx, text1, 120, 50, '16px PT Mono', '#000');
   placeText(ctx, text2, 120, 70, '16px PT Mono', '#000');
-    var maxTime = getMaxElement(times);
+  var maxTime = getMaxElement(times);
   for (var i = 0; i < names.length; i++) {
     var fixedRandom = getRandom().toFixed(1);
     if (names[i] === 'Вы') {
-     formationBar(ctx, cloudX + barWidth + (barGap + barWidth) * i, barGap * 2 + (barHeight - ((barHeight * times[i]) / maxTime)), barWidth, (barHeight * times[i]) / maxTime, 'rgba(255, 0, 0, 0.7)'); 
+      formationBar(ctx, cloudX + barWidth + (barGap + barWidth) * i, barGap * 2 + (barHeight - ((barHeight * times[i]) / maxTime)), barWidth, (barHeight * times[i]) / maxTime, 'rgba(255, 0, 0, 0.7)'); 
     } else {
-     formationBar(ctx, cloudX + barWidth + (barGap + barWidth) * i, barGap * 2 + (barHeight - ((barHeight * times[i]) / maxTime)), barWidth, (barHeight * times[i]) / maxTime, 'rgba(8,54,137, ' + fixedRandom + ')');
+      formationBar(ctx, cloudX + barWidth + (barGap + barWidth) * i, barGap * 2 + (barHeight - ((barHeight * times[i]) / maxTime)), barWidth, (barHeight * times[i]) / maxTime, 'rgba(8,54,137, ' + fixedRandom + ')');
     }
     placeText(ctx, names[i], cloudX + barWidth + (barGap + barWidth) * i, barHeight + gap * 2 + barGap * 2, '16px PT Mono', '#000');
-    placeText(ctx, Math.round(times[i]), cloudX + barWidth + (barGap + barWidth) * i, barGap * 2 - gap + (barHeight - ((barHeight * times[i]) / maxTime)), '16px PT Mono', '#000' );
-    }
+    placeText(ctx, Math.round(times[i]), cloudX + barWidth + (barGap + barWidth) * i, barGap * 2 - gap + (barHeight - ((barHeight * times[i]) / maxTime)), '16px PT Mono', '#000');
+  }
 };
