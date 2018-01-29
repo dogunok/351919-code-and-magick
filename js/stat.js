@@ -43,7 +43,7 @@ window.renderStatistics = function (ctx, names, times) {
   for (var i = 0; i < names.length; i++) {
     var fixedRandom = getRandom().toFixed(1);
     if (names[i] === 'Вы') {
-      formationBar(ctx, cloudX + barWidth + (barGap + barWidth) * i, barGap * 2 + (barHeight - ((barHeight * times[i]) / maxTime)), barWidth, (barHeight * times[i]) / maxTime, 'rgba(255, 0, 0, 0.7)'); 
+      formationBar(ctx, cloudX + barWidth + (barGap + barWidth) * i, barGap * 2 + (barHeight - ((barHeight * times[i]) / maxTime)), barWidth, (barHeight * times[i]) / maxTime, 'rgba(255, 0, 0, 0.7)');
     } else {
       formationBar(ctx, cloudX + barWidth + (barGap + barWidth) * i, barGap * 2 + (barHeight - ((barHeight * times[i]) / maxTime)), barWidth, (barHeight * times[i]) / maxTime, 'rgba(8,54,137, ' + fixedRandom + ')');
     }
